@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FrontController;
 use App\Http\Controllers\OurTeamController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
@@ -12,9 +13,11 @@ use App\Http\Controllers\OurPrincipleController;
 use App\Http\Controllers\ProjectClientController;
 use App\Http\Controllers\CompanyStatisticController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/', [FrontController::class, 'index'])->name('front.index');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
