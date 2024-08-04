@@ -69,5 +69,8 @@ class RolePermissionSeeder extends Seeder
             'password' => bcrypt('secret'),
         ]);
 
+        // Assign 'super_admin' role to the user
+        $user->assignRole($superadminRole);
+
     }
 }
