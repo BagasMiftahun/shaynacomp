@@ -39,8 +39,9 @@
                     </div>
                 </div> 
                 @empty
-                <p>Belum ada data terbaru</p>
-
+                <div class="p-6 text-gray-900">
+                    {{ __("Belum ada data terbaru") }}
+                </div>
                 @endforelse
             </div>
         </div>
