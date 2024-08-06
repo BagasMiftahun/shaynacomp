@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\CompanyStatistic;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreStatisticRequest;
 
 class CompanyStatisticController extends Controller
 {
@@ -27,7 +28,7 @@ class CompanyStatisticController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreStatisticRequest $request)
     {
         //
     }

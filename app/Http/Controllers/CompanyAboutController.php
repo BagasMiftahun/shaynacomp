@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\CompanyAbout;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreAboutRequest;
 
 class CompanyAboutController extends Controller
 {
@@ -27,7 +28,7 @@ class CompanyAboutController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreAboutRequest $request)
     {
         //
     }

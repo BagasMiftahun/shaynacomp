@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\HeroSection;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreHeroSectionRequest;
 
 class HeroSectionController extends Controller
 {
@@ -27,7 +28,7 @@ class HeroSectionController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreHeroSectionRequest $request)
     {
         //
     }
