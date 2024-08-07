@@ -4,12 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\OurTeam;
 use App\Models\Product;
+use App\Models\Appointment;
 use App\Models\HeroSection;
 use App\Models\Testimonial;
 use App\Models\CompanyAbout;
 use App\Models\OurPrinciple;
 use Illuminate\Http\Request;
 use App\Models\CompanyStatistic;
+use Illuminate\Support\Facades\DB;
+use App\Http\Requests\StoreAppoinmentRequest;
 
 class FrontController extends Controller
 {
@@ -39,5 +42,24 @@ class FrontController extends Controller
         $statistics = CompanyStatistic::orderByDesc('id')->take(4)->get();
         $abouts = CompanyAbout::orderByDesc('id')->get();
         return view('front.about', compact('abouts', 'statistics'));
+    }
+
+    public function appointment()
+    {
+        $products = Product::orderByDesc('id')->get();
+        $testimonials = Testimonial::orderByDesc('id')->take(4)->get();
+        return view('front.appointment', compact('products','testimonials'));
+    }
+
+    public function appointmentStore(StoreAppoinmentRequest $request)
+    {
+        //closure-based transactions
+        DB::transaction(function () use ($request) {
+            $validated = $request->validated();
+
+            $newDataRecord = Appointment::create($validated);   
+        });
+
+        return redirect()->route('front.index');
     }
 }
