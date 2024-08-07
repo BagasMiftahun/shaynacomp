@@ -6,6 +6,7 @@ use App\Models\OurTeam;
 use App\Models\Product;
 use App\Models\HeroSection;
 use App\Models\Testimonial;
+use App\Models\CompanyAbout;
 use App\Models\OurPrinciple;
 use Illuminate\Http\Request;
 use App\Models\CompanyStatistic;
@@ -31,5 +32,12 @@ class FrontController extends Controller
         $statistics = CompanyStatistic::orderByDesc('id')->take(4)->get();
         $teams = OurTeam::orderByDesc('id')->get();
         return view('front.team', compact('teams', 'statistics'));
+    }
+
+    public function about()
+    {
+        $statistics = CompanyStatistic::orderByDesc('id')->take(4)->get();
+        $abouts = CompanyAbout::orderByDesc('id')->get();
+        return view('front.about', compact('abouts', 'statistics'));
     }
 }
