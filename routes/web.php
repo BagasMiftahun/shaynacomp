@@ -17,12 +17,14 @@ use App\Http\Controllers\CompanyStatisticController;
 //     return view('welcome');
 // });
 
+Route::get('/', [FrontController::class, 'index'])->name('front.index');
+Route::get('/team', [FrontController::class, 'team'])->name('front.team');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/', [FrontController::class, 'index'])->name('front.index');
     
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
